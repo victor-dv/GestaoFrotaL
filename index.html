@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão Frota</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Dados do caminhão -->
+        <div class="dadosCaminhao">
+            <form>
+                <h2>Dados Caminhão</h2>
+                <label for="chassi">Chassi:</label><br>
+                <input type="number" id="chassi" name="chassi"><br>
+
+                <label for="pbt">Peso Bruto Total (PBT):</label><br>
+                <input type="number" id="pbt" name="lname"><br>
+
+                <label for="reboque">Peso do semi-Reboque:</label><br>
+                <input type="number" id="reboque" name="reboque"><br>
+
+                <label for="equipamentos">Outros equipamentos:</label><br>
+                <input type="number" id="outrosEqui" name="equipamentos"><br>
+
+                <label for="velOperacionalIda">Velocidade Operacional Ida:</label><br>
+                <input type="number" id="velOperacionalIda" name="velOperacionalIda"><br>
+
+                <label for="velOperacionalVolta">Velocidade Operacional Volta:</label><br>
+                <input type="number" id="velOperacionalVolta" name="velOperacionalVolta"><br>
+             
+            </form>
+        </div>
+      <!-- Dados Operacionais -->
+        <div class="dadosOp">
+            <form>
+                <h2>Dados Operacionais</h2>
+                <label for="tempoC">Tempo de carga:</label><br>
+                <input type="number" id="tempoC" name="tempoC"><br>
+
+                <label for="tempoD">Tempo de Descarga:</label><br>
+                <input type="number" id="tempoD" name="tempoD"><br>
+
+                <label for="distanciaPerIda">Distancia percorrida Ida:</label><br>
+                <input type="number" id="distanciaPerIda" name="distanciaPerIda"><br>
+
+                <label for="distanciaPerVolta">Distancia percorrida Volta:</label><br>
+                <input type="number" id="distanciaPerVolta" name="distanciaPerVolta"><br>
+                
+                <label for="jornada">Jornada util:</label><br>
+                <input type="number" id="jornada" name="jornada"><br>
+
+                <label for="tDiario">Turno diario:</label><br>
+                <input type="number" id="tDiario" name="tDiario"><br>
+
+                <label for="diasUteis">Dias úteis:</label><br>
+                <input type="number" id="diasUteis" name="tDiario"><br>
+
+                <label for="manutencao">Paradas para manutenção:</label><br>
+                <input type="number" id="manutencao" name="manutencao"><br>
+            </form>
+            <!-- Dados da Carga -->
+            <div class="dadosCarga">
+                <form>
+                    <h2>Dados da Carga</h2>
+                    <label for="tipo">Tipo</label><br>
+                    <input type="text" id="tipo" name="tipo"><br>
+    
+                    <label for="qntd">Quantidade:</label><br>
+                    <input type="number" id="qntd" name="qntd"><br>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <button onclick="calc()">Calcular</button>
+
+    <div id="divPai"></div>
+    
+    <script src="script.js" type="text/javascript"></script>
+</body>
+
+</html>
