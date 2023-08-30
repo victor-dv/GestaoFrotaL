@@ -19,64 +19,55 @@ const tipo = document.getElementById("tipo")
 const qntd = document.getElementById("qntd")
 
 const divPai = document.getElementById("divPai")
+
+let resultadoH2 = 0;
+
 function calc() {
-    let pesoTotal = Number(chassi.value) + Number(reboque.value) + Number(outrosEqui.value);   //Peso total do veículo:
+    let pesoTotal = Math.ceil(Number(chassi.value) + Number(reboque.value) + Number(outrosEqui.value));
 
-    let cargaUtil = Number(pesoBruto.value) - pesoTotal // Carga útil do veículo
-    
-    let viagensMensais = Number(qntd.value) / 30  //Número de viagens mensais
+    let cargaUtil = Math.ceil(Number(pesoBruto.value) - pesoTotal);
 
-    /* Tempo total de viagem */
-    let tempoIda = (Number(distanciaPerIda.value) / Number(velOperacionalIda.value)) * 60
-    let tempoVolta = (Number(distanciaPerVolta.value) / Number(velOperacionalVolta.value)) * 60
-    let totalViagem = Number(tempoIda) + Number(tempoVolta) + Number(tempoD.value) + Number(tempoC.value)
-    
+    let viagensMensais = Math.ceil(Number(qntd.value) / 30);
 
-    let tempoDiaOperacao = Number(tDiario.value) * Number(jornada.value) * 60; // Tempo diário de operação
+    let tempoIda = Math.ceil((Number(distanciaPerIda.value) / Number(velOperacionalIda.value)) * 60);
+    let tempoVolta = Math.ceil((Number(distanciaPerVolta.value) / Number(velOperacionalVolta.value)) * 60);
+    let totalViagem = Math.ceil(Number(tempoIda) + Number(tempoVolta) + Number(tempoD.value) + Number(tempoC.value));
 
+    let tempoDiaOperacao = Math.ceil(Number(tDiario.value) * Number(jornada.value) * 60);
 
-    let viagensDia = Number(tempoDiaOperacao) / Number(totalViagem) //Número de viagens de um veículo por dia
+    let viagensDia = Math.ceil(Number(tempoDiaOperacao) / Number(totalViagem));
 
-    let diasDisponiveiMes = Number(diasUteis.value) - Number(manutencao.value) //Calculo do número total de dias disponíveis por mês
+    let diasDisponiveiMes = Math.ceil(Number(diasUteis.value) - Number(manutencao.value));
 
-    let viagensMensaisVeiculo = Number(viagensDia) * Number(diasDisponiveiMes) //Número de viagens mensais de um veículo
-    
-    let frotaNecessaria = Math.ceil (Number(viagensMensais) / Number(viagensMensaisVeiculo)) //Calculo da frota necessária
+    let viagensMensaisVeiculo = Math.ceil(Number(viagensDia) * Number(diasDisponiveiMes));
 
-    
+    let frotaNecessaria = Math.ceil(Number(viagensMensais) / Number(viagensMensaisVeiculo));
 
+    resultadoH2++;
 
-    let newDiv = document.createElement('div')
-    newDiv.classList("divFilho")
+    let newDiv = document.createElement('div');
+    newDiv.classList.add("resul");
     newDiv.innerHTML=`
-    
-    <h3>"peso total: "${pesoTotal}</h3>
-    <h3>"carga útil: "${cargaUtil}</h3>
-    <h3>"Viagens Mensais: "${viagensMensais}</h3>
-    <h3>"Tempo de ida: "${tempoIda}</h3>
-    <h3>"Tempo de volta: "${tempoVolta}</h3>
-    <h3>"Total da viagem:"${totalViagem}</h3>
-    <h3>"Tempo Diario de operação :  "${tempoDiaOperacao}</h3>
-    <h3>"Número de viagens de um veículo por dia :  "${viagensDia}</h3>
-    <h3>"Calculo do número total de dias disponíveis por mês: "${diasDisponiveiMes}</h3>
-    <h3>"Número de viagens mensais de um veículo: "${viagensMensaisVeiculo}</h3>
-    <h3>"peso total: "${frotaNecessaria}</h3>
-    `
-    divPai.appendChild(newDiv)
+    <h2>Resultado ${resultadoH2} </h2>
+    <h3>Peso total: ${pesoTotal}</h3>
+    <h3>Carga útil: ${cargaUtil}</h3>
+    <h3>Viagens Mensais: ${viagensMensais}</h3>
+    <h3>Tempo de ida: ${tempoIda}</h3>
+    <h3>Tempo de volta: ${tempoVolta}</h3>
+    <h3>Total da viagem:${totalViagem}</h3>
+    <h3>Tempo Diario de operação :  ${tempoDiaOperacao}</h3>
+    <h3>Número de viagens de um veículo por dia :  ${viagensDia}</h3>
+    <h3>Calculo do número total de dias disponíveis por mês: ${diasDisponiveiMes}</h3>
+    <h3>Número de viagens mensais de um veículo: ${viagensMensaisVeiculo}</h3>
+    <h3>Tipo da carga: ${tipo.value}</h3>
+    <h3>Peso total: ${frotaNecessaria}</h3>
+    `;
 
-
-
-    
-   /*  alert( +
-        "\ncarga útil: " + cargaUtil +
-        "\n " +  +
-        "\nTempo de ida: " + tempoIda +
-        "\nTempo de volta: " + tempoVolta +
-        "\nTotal da viagem: " + totalViagem +
-        "\nTempo Diario de operação : " + tempoDiaOperacao+
-        "\nNúmero de viagens de um veículo por dia :  "+viagensDia+
-        "\nCalculo do número total de dias disponíveis por mês: "+diasDisponiveiMes+
-        "\nNúmero de viagens mensais de um veículo: "+viagensMensaisVeiculo+
-        "\nFrota nescessaria: "+frotaNecessaria
-        ) */
+    divPai.appendChild(newDiv);
 }
+
+
+
+
+
+
